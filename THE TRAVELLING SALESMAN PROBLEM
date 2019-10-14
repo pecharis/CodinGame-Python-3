@@ -1,0 +1,55 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+def fun(x0,y0,xn,yn,xt,yt):
+    dist=100**2+100**2
+    if len(xt)==1:
+        print (str(xt[0]) + "tretretert", file=sys.stderr)
+        print (round(math.sqrt((x0-xt[0])**2+(y0-yt[0])**2)), file=sys.stderr)
+        return math.sqrt((x0-xt[0])**2+(y0-yt[0])**2) + math.sqrt((xn-xt[0])**2+(yn-yt[0])**2)
+    else:
+        for i in range(len(xt)):
+        #for pos in range(len(x)):
+            print(math.sqrt((xn-xt[i])**2+(yn-yt[i])**2), file=sys.stderr)
+            if math.sqrt((xn-xt[i])**2+(yn-yt[i])**2) < dist:
+                dist=math.sqrt((xn-xt[i])**2+(yn-yt[i])**2)
+                xtemp=xt[i]
+                ytemp=yt[i]
+        xt.remove(xtemp)
+        yt.remove(ytemp)
+        return dist + fun(x0,y0,xtemp,ytemp,xt,yt)
+#
+
+
+xt= []
+yt= []
+result=0
+n = int(input())
+for i in range(n):
+    x, y = [int(j) for j in input().split()]
+    ############################
+    if i==0:
+        x0=x
+        y0=y
+    else:
+        xt.append(x)
+        yt.append(y)
+
+
+
+#
+print(xt, file=sys.stderr)
+print(yt, file=sys.stderr)
+#print((x0-xt[0])**2, file=sys.stderr)
+#print((y0-yt[0])**2, file=sys.stderr)
+#print(math.sqrt((x0-xt[0])**2+(y0-yt[0])**2), file=sys.stderr)
+#print(math.sqrt((y0-yt[0])**2), file=sys.stderr)
+result=round(fun(x0,y0,x0,y0,xt,yt))
+
+   # result += result
+# Write an action using print
+# To debug: print("Debug messages...", file=sys.stderr)
+
+print(result)
