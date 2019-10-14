@@ -1,0 +1,52 @@
+/// https://www.codingame.com/training/easy/temperatures ///
+
+
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution { 
+    
+
+    public static void main(String args[]) {
+        int k=5527;
+        int c=0;
+        int i=0;
+        int s=0;
+        String t;
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt(); // the number of temperatures to analyse
+        in.nextLine();
+        String temps = in.nextLine(); // the n temperatures expressed as integers ranging from -273 to 5526
+        // Write an action using System.out.println()
+        // To debug: System.err.println("Debug messages...");
+        if (n==0){k=0;}else{
+        String[] parts = temps.split(" ");
+         while(i<n){
+                 if(parts[i].startsWith("-")){
+                     parts[i] = parts[i].replaceAll("-", "" );s=1;
+                     }
+                     else{s=0;}
+                 int y = Integer.parseInt(parts[i]);            
+            i++; 
+            if(Math.abs(k)==Math.abs(y) && s==0){           
+              k=y; c=n;
+            }else{}
+            if (y>-273 && y<=5526){
+            if (Math.abs(k)>Math.abs(y)){
+                if (s==0){
+                   k=y; c=n;
+                }else{
+                    k=-y; c=n;
+                }         
+            }
+            }
+         }
+        }
+        System.out.println(k);
+    }
+}
