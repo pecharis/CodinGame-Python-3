@@ -1,0 +1,58 @@
+#### https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1 ####
+
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+# w: width of the building.
+# h: height of the building.
+w, h = [int(i) for i in input().split()]
+n = int(input())  # maximum number of turns before game over.
+x0, y0 = [int(i) for i in input().split()]
+last=""
+x=x0
+y=y0
+xmax=w
+ymax=h
+ymin=0
+xmin=0
+# game loop
+while True:
+    bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+    
+    # Write an action using print
+    # To debug: print("Debug messages...", file=sys.stderr)
+    print(bomb_dir, file=sys.stderr)
+    if "D" in bomb_dir :
+        if "D" not in last:
+            y=(y+ymax)//2
+            
+        else:
+            y=(y+ymax)//2
+        ymin=y0
+    if "U" in bomb_dir :
+        if "U" not in last:            
+            y=(y+ymin)//2
+        else:
+            y=(y+ymin)//2  
+        ymax=y0
+    if "L" in bomb_dir :
+        if "L" not in last:
+            x=(x+xmin)//2
+        else:
+            x=(x+xmin)//2
+        xmax=x0
+    if "R" in bomb_dir :
+        if "R" not in last:
+            x=(x+xmax)//2
+        else:
+            x=(x+xmax)//2
+        xmin=x0
+    # the location of the next window Batman should jump to.
+    print(x,y,x0,y0,xmax,ymax,xmin,ymin,last, file=sys.stderr)
+    last=bomb_dir
+    x0=x
+    y0=y
+    print(x,y)
